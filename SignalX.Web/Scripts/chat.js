@@ -2,6 +2,8 @@
 
 $j(function () {
     var chatConn = $j.connection.chathub;
+    var conflictConn = $j.connection.conflicthub;
+
     chatConn.client.addMessage = function (message) {
         $j('#messages').append('<li class="list-group-item">' + message + '</li>');
     };
@@ -14,6 +16,10 @@ $j(function () {
             $j('#message').val('');
             $j('#message').focus();
         });
+
+        $j('#saveUser').click(function (e) {
+            conflictConn.server.saveUser();
+        });
     });
 
     $j('#clear').on('click', function (e) {
@@ -21,8 +27,4 @@ $j(function () {
         $j('#messages').empty();
     });
 
-    $j('#saveUser').on('click', function (e) {
-    	e.preventDefault();
-        chatConn.server.saveUser();
-    });
 });
