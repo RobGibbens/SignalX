@@ -7,7 +7,8 @@ namespace SignalX
 	public class Client
 	{
 		private readonly HubConnection _connection;
-		private readonly IHubProxy _proxy;
+		private readonly IHubProxy _chatHub;
+		private readonly IHubProxy _conflictHub;
 
 		public event EventHandler<string> OnMessageReceived;
 		public event EventHandler OnUserSaved;
@@ -20,23 +21,25 @@ namespace SignalX
 				var sdsd = string.Format("SignalR error: {0}\r\n", ex.Message);
 				//Console.WriteLine(sdsd);
 			};
-			_proxy = _connection.CreateHubProxy("chathub");
+			_chatHub = _connection.CreateHubProxy("chathub");
+			_conflictHub = _connection.CreateHubProxy("conflicthub");
+
 		}
 
 		public async Task Connect()
 		{
 			await _connection.Start();
 
-			_proxy.On("addMessage", (string message) =>
+			_chatHub.On("addMessage", (string message) =>
 				{
 					if (OnMessageReceived != null)
 						OnMessageReceived(this, string.Format("{0}", message));
 				});
 
-			_proxy.On("userSaved", () =>
+			_conflictHub.On("userSaved", () =>
 				{
 					if (OnUserSaved != null)
-						OnUserSaved(this);
+						OnUserSaved(this, new EventArgs());
 				});
 
 			await Send("Connected");
@@ -44,7 +47,7 @@ namespace SignalX
 
 		public Task Send(string message)
 		{
-			return _proxy.Invoke("sendMessage", message);
+			return _chatHub.Invoke("sendMessage", message);
 		}
 	}
 }
