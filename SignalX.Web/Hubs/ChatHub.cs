@@ -3,6 +3,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 
 namespace SignalX.Web.Hubs
 {
+
     [HubName("chathub")]
     public class ChatHub : Hub
     {

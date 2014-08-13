@@ -6,11 +6,11 @@ namespace SignalX
 {
 	public class Client
 	{
-		private readonly string _platform;
 		private readonly HubConnection _connection;
 		private readonly IHubProxy _proxy;
 
 		public event EventHandler<string> OnMessageReceived;
+		public event EventHandler OnUserSaved;
 
 		public Client()
 		{
@@ -31,6 +31,12 @@ namespace SignalX
 				{
 					if (OnMessageReceived != null)
 						OnMessageReceived(this, string.Format("{0}", message));
+				});
+
+			_proxy.On("userSaved", () =>
+				{
+					if (OnUserSaved != null)
+						OnUserSaved(this);
 				});
 
 			await Send("Connected");

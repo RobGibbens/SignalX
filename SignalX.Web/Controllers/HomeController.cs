@@ -13,6 +13,11 @@ namespace SignalX.Web.Controllers
             return View();
         }
 
+		public ActionResult Conflicts()
+		{
+			return View();
+		}
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

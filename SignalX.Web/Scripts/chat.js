@@ -20,4 +20,9 @@ $j(function () {
         e.preventDefault();
         $j('#messages').empty();
     });
+
+    $j('#saveUser').on('click', function (e) {
+    	e.preventDefault();
+        chatConn.server.saveUser();
+    });
 });
