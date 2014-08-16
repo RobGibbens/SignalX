@@ -23,8 +23,8 @@ namespace SignalX
 		{
 			await App.SignalXClient.Connect ();
 
-			App.SignalXClient.OnMessageReceived += (sender, e) => {
-				_viewModel.NewsItems.Add (new NewsItem { Title = e });
+			App.SignalXClient.OnNewsAdded += (sender, e) => {
+				_viewModel.NewsItems.Add (new NewsItem { Title = "here" });
 			};
 		}
 	}

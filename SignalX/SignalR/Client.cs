@@ -9,10 +9,12 @@ namespace SignalX
 		private readonly HubConnection _connection;
 		private readonly IHubProxy _chatHub;
 		private readonly IHubProxy _conflictHub;
+		private readonly IHubProxy _newsHub;
 
 		public event EventHandler<string> OnMessageReceived;
 		public event EventHandler<string> OnChatReceived;
 		public event EventHandler OnUserSaved;
+		public event EventHandler OnNewsAdded;
 
 		public Client()
 		{
@@ -24,6 +26,7 @@ namespace SignalX
 			};
 			_chatHub = _connection.CreateHubProxy("chathub");
 			_conflictHub = _connection.CreateHubProxy("conflicthub");
+			_newsHub = _connection.CreateHubProxy("newshub");
 
 		}
 
@@ -44,6 +47,12 @@ namespace SignalX
 				{
 					if (OnUserSaved != null)
 						OnUserSaved(this, new EventArgs());
+				});
+
+			_newsHub.On("newsAdded", (object item) =>
+				{
+					if (OnNewsAdded != null)
+						OnNewsAdded(this, new EventArgs());
 				});
 
 			await Send("Connected");
