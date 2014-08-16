@@ -102,6 +102,16 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\chatboxes.png" />
+    <BundleResource Include="Resources\chatboxes%402x.png" />
+    <BundleResource Include="Resources\news.png" />
+    <BundleResource Include="Resources\news%402x.png" />
+    <BundleResource Include="Resources\conflicts.png" />
+    <BundleResource Include="Resources\conflicts%402x.png" />
+    <BundleResource Include="Resources\alert.png" />
+    <BundleResource Include="Resources\alert%402x.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\info%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -111,7 +121,11 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\MyEditorRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+  </ItemGroup>
 </Project>

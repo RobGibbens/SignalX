@@ -12,6 +12,10 @@ namespace SignalX
 		{
 			InitializeComponent ();
 
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
+				await DisplayAlert ("Info", "Message", "OK");
+			}));
+
 			_viewModel = new NewsViewModel ();
 
 			this.BindingContext = _viewModel;
@@ -23,7 +27,6 @@ namespace SignalX
 		{
 			await App.SignalXClient.Connect ();
 
-			;
 			App.SignalXClient.OnNewsAdded += (sender, newsItem) => {
 				_viewModel.NewsItems.Add (newsItem);
 			};

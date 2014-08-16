@@ -10,6 +10,10 @@ namespace SignalX
 		public ConflictPage ()
 		{
 			InitializeComponent ();
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
+				await DisplayAlert ("Info", "Message", "OK");
+			}));
+
 			ConnectClient ();
 		}
 
@@ -23,6 +27,7 @@ namespace SignalX
 		void HandleOnUserSaved (object sender, EventArgs e)
 		{
 			Device.BeginInvokeOnMainThread(() => {
+				this.ConflictLabel.IsVisible = true;
 				this.ConflictLabel.Text = "Conflict: Another user have saved this record on the server";
 				this.FirstNameEntry.Text = string.Empty;
 				this.LastNameEntry.Text = string.Empty;

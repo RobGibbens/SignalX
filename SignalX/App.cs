@@ -17,7 +17,8 @@ namespace SignalX
 
 		public static Page GetMainPage ()
 		{	
-			return new NavigationPage(new MenuPage ());
+			return new MainPage ();
+			//return new NavigationPage(new MainPage ());
 		}
 	}
 }

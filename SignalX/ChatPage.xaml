@@ -5,19 +5,36 @@
 	x:Class="SignalX.ChatPage"
 	Title="Chats">
 
-	<StackLayout Orientation="Vertical">
-		<Label Text="Message to Send" />
-		<Entry x:Name="messageToSend" Text="{Binding MessageToSend, Mode=TwoWay}" />
-		<Button x:Name="Send" Text="Send" BackgroundColor="Green" TextColor="White" HorizontalOptions="FillAndExpand" />
+	<ContentPage.Padding>
+		<OnPlatform 
+			x:TypeArguments="Thickness" 
+			iOS="5,20,5,5" 
+			Android="5,0,5,5" 
+			WinPhone="5,0,5,5" />
+	</ContentPage.Padding>
 
-		<Label Text="Received Messages" />
-		<ListView x:Name="chats" ItemsSource="{Binding ChatMessages, Mode=TwoWay}">
-			<ListView.ItemTemplate>
-		        <DataTemplate>
-		        	<TextCell Text="{Binding Message}" />
-		        </DataTemplate>
-		    </ListView.ItemTemplate>
-	    </ListView>
+	<ScrollView>
+		<StackLayout Orientation="Vertical">
+			<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Chat" />
+		
 
-    </StackLayout>
+
+			<Editor 
+				x:Name="messageToSend" 
+				Text="{Binding MessageToSend, Mode=TwoWay}" 
+				HeightRequest="75" />
+
+			<Button x:Name="Send" Text="Send" BackgroundColor="Green" TextColor="White" HorizontalOptions="FillAndExpand" />
+
+			<Label Text="Received Messages" />
+			<ListView x:Name="chats" ItemsSource="{Binding ChatMessages, Mode=TwoWay}">
+				<ListView.ItemTemplate>
+			        <DataTemplate>
+			        	<TextCell Text="{Binding Message}" />
+			        </DataTemplate>
+			    </ListView.ItemTemplate>
+		    </ListView>
+
+	    </StackLayout>
+	</ScrollView>
 </ContentPage>

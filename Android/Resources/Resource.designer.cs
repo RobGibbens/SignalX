@@ -45,7 +45,22 @@ namespace SignalX.Android
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int alert = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int chatboxes = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int conflicts = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Icon = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int info = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int news = 2130837509;
 			
 			static Drawable()
 			{
@@ -77,7 +92,10 @@ namespace SignalX.Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int EditorOutline = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
 			static Layout()
 			{

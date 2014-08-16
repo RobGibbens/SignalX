@@ -3,14 +3,28 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="SignalX.NewsPage"
-	Title="List">
+	Title="News">
 
-	<ListView x:Name="newsList" ItemsSource="{Binding NewsItems, Mode=TwoWay}">
-		<ListView.ItemTemplate>
-	        <DataTemplate>
+	<ContentPage.Padding>
+		<OnPlatform 
+			x:TypeArguments="Thickness" 
+			iOS="5,20,5,5" 
+			Android="5,0,5,5" 
+			WinPhone="5,0,5,5" />
+	</ContentPage.Padding>
 
-	        	<TextCell Text="{Binding Title}" />
-	        </DataTemplate>
-	    </ListView.ItemTemplate>
-    </ListView>
+	<StackLayout>
+		<Label HorizontalOptions="CenterAndExpand" Font="26" Text="News of the World" />
+		
+
+		<ListView x:Name="newsList" ItemsSource="{Binding NewsItems, Mode=TwoWay}">
+			<ListView.ItemTemplate>
+		        <DataTemplate>
+
+		        	<TextCell Text="{Binding Title}" Detail="{Binding Body}" />
+		        </DataTemplate>
+		    </ListView.ItemTemplate>
+	    </ListView>
+
+    </StackLayout>
 </ContentPage>	

@@ -5,6 +5,14 @@
 	x:Class="SignalX.ConflictPage" 
 	Title="Conflicts">
 
+	<ContentPage.Padding>
+		<OnPlatform 
+			x:TypeArguments="Thickness" 
+			iOS="5,20,5,5" 
+			Android="5,0,5,5" 
+			WinPhone="5,0,5,5" />
+	</ContentPage.Padding>
+
 	<ScrollView>
 		<StackLayout 
 			HorizontalOptions="FillAndExpand" 
@@ -12,22 +20,29 @@
 			Orientation="Vertical"
 			Spacing="10">
 
-			<Label HorizontalOptions="CenterAndExpand" Text="Save a user" />
+			<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Edit User" />
 
 
-			<Label 
-				x:Name="ConflictLabel"
+			<StackLayout 
+				x:Name="ConflictPanel"
+				HorizontalOptions="FillAndExpand" 
 				BackgroundColor="Red" 
-				TextColor="White"
-				HorizontalOptions="CenterAndExpand"
-				Text="Warning" />
+				IsVisible="false" 
+				HeightRequest="50">
+				<Label 
+					x:Name="ConflictLabel"
+					BackgroundColor="Transparent" 
+					TextColor="White"
+					HorizontalOptions="CenterAndExpand"
+					VerticalOptions="CenterAndExpand"
+					Text="Warning" />
+			</StackLayout>
 
-
-			<Label HorizontalOptions="StartAndExpand" Text="First Name" />
+			<Label HorizontalOptions="FillAndExpand" Text="First Name" />
 			
 			<Entry x:Name="FirstNameEntry"></Entry>
 
-			<Label HorizontalOptions="StartAndExpand" Text="Last Name" />
+			<Label HorizontalOptions="FillAndExpand" Text="Last Name" />
 			
 			<Entry x:Name="LastNameEntry"></Entry>
 

@@ -1,6 +1,4 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SignalX
 {	
@@ -9,7 +7,10 @@ namespace SignalX
 		public NotificationPage ()
 		{
 			InitializeComponent ();
+
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
+				await DisplayAlert ("Info", "Message", "OK");
+			}));
 		}
 	}
 }
-

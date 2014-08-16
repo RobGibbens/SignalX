@@ -5,6 +5,15 @@
 	 x:Class="SignalX.AlertPage"
 	 Title="Alert">
 
-	<Label Text="Alert" />
+	<ContentPage.Padding>
+		<OnPlatform 
+			x:TypeArguments="Thickness" 
+			iOS="5,20,5,5" 
+			Android="5,0,5,5" 
+			WinPhone="5,0,5,5" />
+	</ContentPage.Padding>
+
+	<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Alerts" />
+
 
 </ContentPage>

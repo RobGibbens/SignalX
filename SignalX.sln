@@ -159,7 +159,7 @@ Global
 		{FCC06BC2-A508-4490-AC12-C3627F13920F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = iOS\SignalX.iOS.csproj
+		StartupItem = Android\SignalX.Android.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
