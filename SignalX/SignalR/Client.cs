@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json.Linq;
 
 namespace SignalX
 {
@@ -14,7 +15,7 @@ namespace SignalX
 		public event EventHandler<string> OnMessageReceived;
 		public event EventHandler<string> OnChatReceived;
 		public event EventHandler OnUserSaved;
-		public event EventHandler OnNewsAdded;
+		public event EventHandler<NewsItem> OnNewsAdded;
 
 		public Client()
 		{
@@ -49,10 +50,11 @@ namespace SignalX
 						OnUserSaved(this, new EventArgs());
 				});
 
-			_newsHub.On("newsAdded", (object item) =>
+			_newsHub.On("newsAdded", (JContainer item) =>
 				{
+					var newsItem = item.ToObject<NewsItem>();
 					if (OnNewsAdded != null)
-						OnNewsAdded(this, new EventArgs());
+						OnNewsAdded(this, newsItem);
 				});
 
 			await Send("Connected");

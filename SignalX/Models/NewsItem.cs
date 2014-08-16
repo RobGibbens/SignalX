@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
-using System.Collections.ObjectModel;
 
 namespace SignalX
 {
@@ -12,5 +9,7 @@ namespace SignalX
 		public string Title { get; set; }
 
 		public string Body { get; set; }
+
+		public DateTime Created { get; set; }
 	}
 }

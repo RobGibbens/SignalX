@@ -242,6 +242,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Conflicts.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <None Include="default.deployment" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
