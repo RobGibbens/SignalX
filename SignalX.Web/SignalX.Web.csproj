@@ -243,6 +243,7 @@
     <Content Include="Views\Home\Conflicts.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <None Include="default.deployment" />
+    <None Include=".deployment" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
