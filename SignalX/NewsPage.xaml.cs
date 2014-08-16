@@ -1,12 +1,14 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Collections.Generic;
+using Xamarin.Forms;
 using System.Threading.Tasks;
 
 namespace SignalX
-{
-	public partial class ListPage : ContentPage
-	{
+{	
+	public partial class NewsPage : ContentPage
+	{	
 		private readonly NewsViewModel _viewModel;
-		public ListPage ()
+		public NewsPage ()
 		{
 			InitializeComponent ();
 

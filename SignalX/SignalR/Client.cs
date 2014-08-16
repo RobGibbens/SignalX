@@ -11,6 +11,7 @@ namespace SignalX
 		private readonly IHubProxy _conflictHub;
 
 		public event EventHandler<string> OnMessageReceived;
+		public event EventHandler<string> OnChatReceived;
 		public event EventHandler OnUserSaved;
 
 		public Client()
@@ -34,6 +35,9 @@ namespace SignalX
 				{
 					if (OnMessageReceived != null)
 						OnMessageReceived(this, string.Format("{0}", message));
+
+					if (OnChatReceived != null)
+						OnChatReceived(this, string.Format("{0}", message));
 				});
 
 			_conflictHub.On("userSaved", () =>
@@ -44,7 +48,7 @@ namespace SignalX
 
 			await Send("Connected");
 		}
-
+			
 		public Task Send(string message)
 		{
 			return _chatHub.Invoke("sendMessage", message);

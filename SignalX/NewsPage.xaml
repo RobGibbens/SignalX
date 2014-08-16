@@ -2,10 +2,10 @@
 <ContentPage 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	x:Class="SignalX.ListPage"
+	x:Class="SignalX.NewsPage"
 	Title="List">
 
-	<ListView x:Name="list" ItemsSource="{Binding NewsItems, Mode=TwoWay}">
+	<ListView x:Name="newsList" ItemsSource="{Binding NewsItems, Mode=TwoWay}">
 		<ListView.ItemTemplate>
 	        <DataTemplate>
 
@@ -13,5 +13,4 @@
 	        </DataTemplate>
 	    </ListView.ItemTemplate>
     </ListView>
-
-</ContentPage>
+</ContentPage>	

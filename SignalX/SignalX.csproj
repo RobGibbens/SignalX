@@ -35,12 +35,8 @@
     <Compile Include="MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
     <Compile Include="ConflictPage.xaml.cs">
       <DependentUpon>ConflictPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="AlertPage.xaml.cs">
       <DependentUpon>AlertPage.xaml</DependentUpon>
@@ -48,10 +44,19 @@
     <Compile Include="NotificationPage.xaml.cs">
       <DependentUpon>NotificationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MenuViewModel.cs" />
-    <Compile Include="MenuItem.cs" />
-    <Compile Include="NewsViewModel.cs" />
-    <Compile Include="NewsItem.cs" />
+    <Compile Include="ChatPage.xaml.cs">
+      <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="SignalR\Client.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\NewsItem.cs" />
+    <Compile Include="Models\ChatMessage.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
@@ -88,14 +93,22 @@
     <EmbeddedResource Include="ConflictPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="AlertPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="NotificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChatPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="SignalR\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

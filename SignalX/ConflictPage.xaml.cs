@@ -17,14 +17,17 @@ namespace SignalX
 		{
 			await App.SignalXClient.Connect ();
 
-			App.SignalXClient.OnUserSaved += async (sender, e) => {
+			App.SignalXClient.OnUserSaved += HandleOnUserSaved;
+		}
 
-				Device.BeginInvokeOnMainThread(() => {
-					this.FirstNameEntry.Text = string.Empty;
-					this.LastNameEntry.Text = string.Empty;
-					DisplayAlert("CONFLICT!", "Another user have saved this record on the server", "Cancel");
-				});
-			};
+		void HandleOnUserSaved (object sender, EventArgs e)
+		{
+			Device.BeginInvokeOnMainThread(() => {
+				this.ConflictLabel.Text = "Conflict: Another user have saved this record on the server";
+				this.FirstNameEntry.Text = string.Empty;
+				this.LastNameEntry.Text = string.Empty;
+				//DisplayAlert("CONFLICT!", "Another user have saved this record on the server", "Cancel");
+			});
 		}
 	}
 }

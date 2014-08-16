@@ -20,8 +20,11 @@ namespace SignalX
 			case "Conflicts":
 				await this.Navigation.PushAsync (new ConflictPage ());
 				break;
-			case "New items in list":
-				await this.Navigation.PushAsync (new ListPage ());
+			case "Chat":
+				await this.Navigation.PushAsync (new ChatPage ());
+				break;
+			case "News items":
+				await this.Navigation.PushAsync (new NewsPage ());
 				break;
 			case "Alert message":
 				await this.Navigation.PushAsync (new AlertPage ());

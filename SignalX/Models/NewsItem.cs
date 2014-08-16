@@ -13,5 +13,4 @@ namespace SignalX
 
 		public string Body { get; set; }
 	}
-	
 }

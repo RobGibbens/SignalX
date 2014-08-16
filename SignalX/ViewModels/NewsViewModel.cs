@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Xamarin.Forms;
 using System.Collections.ObjectModel;
 
 namespace SignalX
 {
-
 	public class NewsViewModel
 	{
 		public NewsViewModel ()
@@ -15,5 +12,4 @@ namespace SignalX
 
 		public IList<NewsItem> NewsItems { get; set; }
 	}
-	
 }
