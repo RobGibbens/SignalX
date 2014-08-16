@@ -23,7 +23,10 @@ $j(function () {
         });
 
         $j('#addNews').click(function (e) {
-            newsConn.server.addNews("title1", "body1");
+            var title = $j('#newsTitle').val();
+            var body = $j('#newsBody').val();
+
+            newsConn.server.addNews(title, body);
         });
     });
 
