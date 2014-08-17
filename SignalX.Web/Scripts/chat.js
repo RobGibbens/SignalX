@@ -4,6 +4,7 @@ $j(function () {
     var chatConn = $j.connection.chathub;
     var conflictConn = $j.connection.conflicthub;
     var newsConn = $j.connection.newshub;
+    var alertConn = $j.connection.alerthub;
 
     chatConn.client.addMessage = function (message) {
         $j('#messages').append('<li class="list-group-item">' + message + '</li>');
@@ -20,6 +21,11 @@ $j(function () {
 
         $j('#saveUser').click(function (e) {
             conflictConn.server.saveUser();
+        });
+
+        $j('#sendAlert').click(function () {
+            var message = $j('#alertMessage').val();
+            alertConn.server.sendAlert(message);
         });
 
         $j('#addNews').click(function (e) {

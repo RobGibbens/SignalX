@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Alerts";
+}
+
+<form role="form">
+    <div class="form-group">
+        <label for="alertMessage">Alert Message</label>
+        <textarea id="alertMessage" name="alertMessage" rows="10" cols="15" class="form-control" placeholder="Enter message"></textarea>
+    </div>
+
+    <button class="btn btn-success btn-lg" id="sendAlert">Send Alert</button>
+</form>
+
+<div class="row" style="padding-top: 20px;">
+    <div class="col-sm-12">
+        <p class="bg-info" style="height: 50px;">
+            Alerts : 
+        </p>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/chat.js"></script>
+}    

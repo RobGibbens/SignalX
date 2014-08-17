@@ -1,26 +1,27 @@
 ﻿@{
     ViewBag.Title = "News";
 }
+<form role="form">
+    <div class="form-group">
+        <label for="newsTitle">News Title</label>
+        <input type="text" class="form-control" id="newsTitle" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label for="newsBody">News Body</label>
+        <textarea id="newsBody" name="newsBody" class="form-control" placeholder="Enter body" rows="10" cols="15"></textarea>
+    </div>
+    <button class="btn btn-success btn-lg" id="addNews">Add News Item</button>
+</form>
 
-<div class="row">
-    <div class="col-lg-12">
-        News Title :
-        <input type="text" id="newsTitle" name="newsTitle" />
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        News Body :
-        <textarea id="newsBody" name="newsBody" rows="10" cols="15"></textarea>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <button class="btn btn-danger" id="addNews">Add News Item</button>
-    </div>
-</div>
 
+<div class="row" style="padding-top: 20px;">
+    <div class="col-sm-12">
+        <p class="bg-info" style="height: 50px;">
+            News :
+        </p>
+    </div>
+</div>
 @section scripts
 {
     <script src="~/Scripts/chat.js"></script>
-}    
+}
