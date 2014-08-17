@@ -1,20 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Robert's iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SignalX/AlertPage.xaml.cs">
     <Files>
-      <File FileName="SignalX/MainPage.xaml.cs" Line="3" Column="3" />
-      <File FileName="SignalX/ChatPage.xaml.cs" Line="5" Column="5" />
-      <File FileName="SignalX/NewsPage.xaml.cs" Line="5" Column="5" />
-      <File FileName="SignalX/ConflictPage.xaml.cs" Line="5" Column="5" />
-      <File FileName="SignalX/AlertPage.xaml.cs" Line="5" Column="5" />
-      <File FileName="SignalX/NotificationPage.xaml.cs" Line="3" Column="3" />
-      <File FileName="Android/Renderers/MyEditorRenderer.cs" Line="5" Column="5" />
-      <File FileName="Android/MainActivity.cs" Line="26" Column="26" />
+      <File FileName="iOS/Main.cs" Line="2" Column="2" />
+      <File FileName="SignalX/SignalR/Client.cs" Line="6" Column="6" />
+      <File FileName="SignalX/ConflictPage.xaml.cs" Line="4" Column="4" />
+      <File FileName="SignalX/AlertPage.xaml.cs" Line="2" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="SignalX/SignalR/Client.cs" line="40" offsetX="390" offsetY="514" expression="OnChatReceived" liveUpdate="False" />
+    <Watch file="SignalX/SignalR/Client.cs" line="36" offsetX="526" offsetY="562" expression="_connection.State" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.SignalX.Android MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
 </Properties>

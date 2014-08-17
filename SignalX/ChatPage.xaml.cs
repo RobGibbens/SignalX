@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 namespace SignalX
 {	
@@ -12,24 +10,17 @@ namespace SignalX
 		{
 			InitializeComponent ();
 
-			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
-				await DisplayAlert ("Info", "Message", "OK");
-			}));
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
+				await DisplayAlert ("Info", "Message", "OK")
+			));
 
 			_viewModel = new ChatViewModel ();
 
 			this.BindingContext = _viewModel;
 
-			ConnectClient ();
-		}
-
-		private async Task ConnectClient()
-		{
-			await App.SignalXClient.Connect ();
-
-			App.SignalXClient.OnChatReceived += (sender, e) => {
+			App.SignalXClient.OnChatReceived += (sender, e) => 
 				_viewModel.ChatMessages.Add (new ChatMessage { Message = e });
-			};
+
 
 			this.Send.Clicked += async (sender, e) => {
 				var message = this.messageToSend.Text;
@@ -39,4 +30,3 @@ namespace SignalX
 		}
 	}
 }
-

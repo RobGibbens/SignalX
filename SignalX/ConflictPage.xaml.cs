@@ -1,25 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 
 namespace SignalX
 {	
+
 	public partial class ConflictPage : ContentPage
 	{	
+		readonly ConflictViewModel _viewModel;
 		public ConflictPage ()
 		{
 			InitializeComponent ();
-			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
-				await DisplayAlert ("Info", "Message", "OK");
-			}));
 
-			ConnectClient ();
-		}
+			_viewModel = new ConflictViewModel ();
+			this.BindingContext = _viewModel;
 
-		private async Task ConnectClient()
-		{
-			await App.SignalXClient.Connect ();
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
+				await DisplayAlert ("Info", "Message", "OK")
+			));
+
+			ClearError.Clicked += (sender, e) => {
+				_viewModel.ErrorMessage = string.Empty;
+				_viewModel.HasErrors = false;
+			};
 
 			App.SignalXClient.OnUserSaved += HandleOnUserSaved;
 		}
@@ -27,11 +29,13 @@ namespace SignalX
 		void HandleOnUserSaved (object sender, EventArgs e)
 		{
 			Device.BeginInvokeOnMainThread(() => {
-				this.ConflictLabel.IsVisible = true;
-				this.ConflictLabel.Text = "Conflict: Another user have saved this record on the server";
-				this.FirstNameEntry.Text = string.Empty;
-				this.LastNameEntry.Text = string.Empty;
-				//DisplayAlert("CONFLICT!", "Another user have saved this record on the server", "Cancel");
+
+				_viewModel.HasErrors = true;
+				_viewModel.ErrorMessage = "Conflict: Another user has saved this record on the server";
+				_viewModel.FirstName = string.Empty;
+				_viewModel.LastName = string.Empty;
+
+				//DisplayAlert("CONFLICT!", "Another user has saved this record on the server", "OK");
 			});
 		}
 	}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
-using System.Threading.Tasks;
+﻿using Xamarin.Forms;
 
 namespace SignalX
 {	
@@ -12,24 +9,17 @@ namespace SignalX
 		{
 			InitializeComponent ();
 
-			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => {
-				await DisplayAlert ("Info", "Message", "OK");
-			}));
+			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
+				await DisplayAlert ("Info", "Message", "OK")
+			));
 
 			_viewModel = new NewsViewModel ();
 
 			this.BindingContext = _viewModel;
 
-			ConnectClient ();
-		}
-
-		private async Task ConnectClient()
-		{
-			await App.SignalXClient.Connect ();
-
-			App.SignalXClient.OnNewsAdded += (sender, newsItem) => {
+			App.SignalXClient.OnNewsAdded += (sender, newsItem) => 
 				_viewModel.NewsItems.Add (newsItem);
-			};
+			
 		}
 	}
 }

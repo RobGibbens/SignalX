@@ -17,36 +17,33 @@
 		<StackLayout 
 			HorizontalOptions="FillAndExpand" 
 			VerticalOptions="FillAndExpand" 
-			Orientation="Vertical"
-			Spacing="10">
+			Orientation="Vertical">
 
 			<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Edit User" />
 
-
-			<StackLayout 
-				x:Name="ConflictPanel"
-				HorizontalOptions="FillAndExpand" 
-				BackgroundColor="Red" 
-				IsVisible="false" 
-				HeightRequest="50">
-				<Label 
-					x:Name="ConflictLabel"
-					BackgroundColor="Transparent" 
-					TextColor="White"
-					HorizontalOptions="CenterAndExpand"
-					VerticalOptions="CenterAndExpand"
-					Text="Warning" />
-			</StackLayout>
-
 			<Label HorizontalOptions="FillAndExpand" Text="First Name" />
 			
-			<Entry x:Name="FirstNameEntry"></Entry>
+			<Entry x:Name="FirstNameEntry" Text="{Binding FirstName, Mode=TwoWay}"></Entry>
 
 			<Label HorizontalOptions="FillAndExpand" Text="Last Name" />
 			
-			<Entry x:Name="LastNameEntry"></Entry>
+			<Entry x:Name="LastNameEntry"  Text="{Binding LastName, Mode=TwoWay}"></Entry>
 
 			<Button x:Name="SaveUserButton" BackgroundColor="Green" TextColor="White" Text="Save User"></Button>
+
+			<Label 
+				x:Name="ConflictLabel"
+				BackgroundColor="Transparent" 
+				TextColor="Red"
+				HorizontalOptions="CenterAndExpand"
+				Text="{Binding ErrorMessage}"
+				Font="14" />
+
+			<Button 
+				x:Name="ClearError"
+				HorizontalOptions="FillAndExpand"
+				Text="Clear Error"
+				IsVisible="{Binding HasErrors}" />
 		</StackLayout>
 	</ScrollView>
 

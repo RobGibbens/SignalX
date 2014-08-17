@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SignalX
 {
 	public class ChatViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
+
+		void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+		{
+			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 
 		public ChatViewModel ()
 		{
@@ -25,7 +31,7 @@ namespace SignalX
 			set {
 				if (messageToSend != value) {
 					messageToSend = value;
-					PropertyChanged(this, new PropertyChangedEventArgs("MessageToSend"));
+					RaisePropertyChanged ();
 				}
 			}
 		}
