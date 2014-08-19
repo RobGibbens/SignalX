@@ -9,8 +9,8 @@ $j(function () {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
-    chatConn.client.addMessage = function (message) {
-        $j('#messages').append('<li class="list-group-item">' + message + '</li>');
+    chatConn.client.addMessage = function (message, id) {
+        $j('#messages').append('<li class="list-group-item">' + message + ' ' + id + '</li>');
     };
 
     $j.connection.hub.start().done(function () {
