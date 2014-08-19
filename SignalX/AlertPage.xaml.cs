@@ -4,16 +4,22 @@ namespace SignalX
 {
 	public partial class AlertPage : ContentPage
 	{
-		public AlertPage ()
+		AlertViewModel _viewModel;
+
+		public AlertPage () : base()
 		{
 			InitializeComponent ();
+
+			_viewModel = new AlertViewModel ();
+			this.BindingContext = _viewModel;
 
 			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
 				await DisplayAlert ("Info", "Message", "OK")
 			));
 
-			App.SignalXClient.OnAlertSent += async (sender, e) => 
-				await DisplayAlert("Alert!", e, "OK");
+			MessagingCenter.Subscribe<ErrorAlert> (this, "", (errorAlert) => {
+				DisplayAlert("Alert!", "Message", "OK");
+			});
 		}
 	}
 }

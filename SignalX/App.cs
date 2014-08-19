@@ -18,8 +18,8 @@ namespace SignalX
 		public static Page GetMainPage ()
 		{	
 			App.SignalXClient.Connect ();
+
 			return new MainPage ();
-			//return new NavigationPage(new MainPage ());
 		}
 	}
 }

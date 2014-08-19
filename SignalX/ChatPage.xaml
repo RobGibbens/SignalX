@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="SignalX.ChatPage"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:SignalX;assembly=SignalX"
 	Title="Chats">
 
 	<ContentPage.Padding>
@@ -13,24 +14,41 @@
 			WinPhone="5,0,5,5" />
 	</ContentPage.Padding>
 
+	<ContentPage.Resources>
+	  <ResourceDictionary>
+	  	<local:AlignmentConverter x:Key="myApp" />
+	  </ResourceDictionary>
+	</ContentPage.Resources>
+
 	<ScrollView>
 		<StackLayout Orientation="Vertical">
 			<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Chat" />
-		
-
 
 			<Editor 
 				x:Name="messageToSend" 
 				Text="{Binding MessageToSend, Mode=TwoWay}" 
 				HeightRequest="75" />
 
-			<Button x:Name="Send" Text="Send" BackgroundColor="Green" TextColor="White" HorizontalOptions="FillAndExpand" />
+			<Button 
+				x:Name="Send" 
+				Text="Send" 
+				BackgroundColor="Green" 
+				TextColor="White" 
+				HorizontalOptions="FillAndExpand" 
+				Command="{Binding SendMessage}" />
 
 			<Label Text="Received Messages" />
+
 			<ListView x:Name="chats" ItemsSource="{Binding ChatMessages, Mode=TwoWay}">
 				<ListView.ItemTemplate>
 			        <DataTemplate>
-			        	<TextCell Text="{Binding Message}" />
+				        <ViewCell>
+				          <ViewCell.View>
+				            <Label 
+				            	Text="{Binding Message}"
+				            	XAlign="{Binding IsLocalUser, Converter={StaticResource myApp}}" />
+				          </ViewCell.View>
+				        </ViewCell>
 			        </DataTemplate>
 			    </ListView.ItemTemplate>
 		    </ListView>

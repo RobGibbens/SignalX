@@ -15,12 +15,10 @@
 
 	<StackLayout>
 		<Label HorizontalOptions="CenterAndExpand" Font="26" Text="News of the World" />
-		
 
 		<ListView x:Name="newsList" ItemsSource="{Binding NewsItems, Mode=TwoWay}">
 			<ListView.ItemTemplate>
 		        <DataTemplate>
-
 		        	<TextCell Text="{Binding Title}" Detail="{Binding Body}" />
 		        </DataTemplate>
 		    </ListView.ItemTemplate>

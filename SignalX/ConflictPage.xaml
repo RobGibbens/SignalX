@@ -29,7 +29,12 @@
 			
 			<Entry x:Name="LastNameEntry"  Text="{Binding LastName, Mode=TwoWay}"></Entry>
 
-			<Button x:Name="SaveUserButton" BackgroundColor="Green" TextColor="White" Text="Save User"></Button>
+			<Button 
+				x:Name="SaveUserButton" 
+				BackgroundColor="Green" 
+				TextColor="White" 
+				Text="Save User"
+				Command="{Binding SaveUser}"></Button>
 
 			<Label 
 				x:Name="ConflictLabel"
@@ -43,7 +48,8 @@
 				x:Name="ClearError"
 				HorizontalOptions="FillAndExpand"
 				Text="Clear Error"
-				IsVisible="{Binding HasErrors}" />
+				IsVisible="{Binding HasErrors}"
+				Command="{Binding ClearErrorMessage}" />
 		</StackLayout>
 	</ScrollView>
 

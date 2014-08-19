@@ -1,5 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SignalX
 {	
@@ -17,16 +16,6 @@ namespace SignalX
 			_viewModel = new ChatViewModel ();
 
 			this.BindingContext = _viewModel;
-
-			App.SignalXClient.OnChatReceived += (sender, e) => 
-				_viewModel.ChatMessages.Add (new ChatMessage { Message = e });
-
-
-			this.Send.Clicked += async (sender, e) => {
-				var message = this.messageToSend.Text;
-				await App.SignalXClient.Send(message);
-				_viewModel.MessageToSend = string.Empty;
-			};
 		}
 	}
 }

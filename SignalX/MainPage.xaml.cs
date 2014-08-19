@@ -8,8 +8,8 @@ namespace SignalX
 		{
 			InitializeComponent ();
 
-			this.Children.Add (new NavigationPage (new ConflictPage ()) { Title = "Conflicts", Icon = "conflicts.png" });
 			this.Children.Add (new NavigationPage (new ChatPage ()) { Title = "Chats", Icon = "chatboxes.png" });
+			this.Children.Add (new NavigationPage (new ConflictPage ()) { Title = "Conflicts", Icon = "conflicts.png" });
 			this.Children.Add (new NavigationPage (new NewsPage ()) { Title = "News", Icon = "news.png" });
 			this.Children.Add (new NavigationPage (new AlertPage ()) { Title = "Alerts", Icon = "alert.png" });
 		}

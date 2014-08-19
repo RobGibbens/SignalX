@@ -1,19 +1,29 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System;
 
 namespace SignalX
-{	
+{
+
+
 	public class ConflictViewModel :  INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-
-		void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+		public ConflictViewModel ()
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			App.SignalXClient.OnUserSaved += HandleOnUserSaved;
+		}
+
+		void RaisePropertyChanged ([CallerMemberName] string propertyName = "")
+		{
+			PropertyChanged (this, new PropertyChangedEventArgs (propertyName));
 		}
 
 		string _firstName;
+
 		public string FirstName {
 			get {
 				return _firstName;
@@ -27,6 +37,7 @@ namespace SignalX
 		}
 
 		string _lastName;
+
 		public string LastName {
 			get {
 				return _lastName;
@@ -40,6 +51,7 @@ namespace SignalX
 		}
 
 		string _errorMessage;
+
 		public string ErrorMessage {
 			get {
 				return _errorMessage;
@@ -53,6 +65,7 @@ namespace SignalX
 		}
 
 		bool _hasErrors;
+
 		public bool HasErrors {
 			get {
 				return _hasErrors;
@@ -63,6 +76,31 @@ namespace SignalX
 					RaisePropertyChanged ();
 				}
 			}
+		}
+
+		public ICommand ClearErrorMessage {
+			get {
+				return new Command (async () => {
+					this.ErrorMessage = string.Empty;
+					this.HasErrors = false;
+				});
+			}
+		}
+
+		public ICommand SaveUser {
+			get {
+				return new Command (async () => {
+
+				});
+			}
+		}
+
+		void HandleOnUserSaved (object sender, EventArgs e)
+		{
+			this.HasErrors = true;
+			this.ErrorMessage = "Conflict: Another user has saved this record on the server";
+			this.FirstName = string.Empty;
+			this.LastName = string.Empty;
 		}
 	}
 	

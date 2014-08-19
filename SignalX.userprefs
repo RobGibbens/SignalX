@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Robert's iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SignalX/AlertPage.xaml.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SignalX/ViewModels/ChatViewModel.cs">
     <Files>
-      <File FileName="iOS/Main.cs" Line="2" Column="2" />
-      <File FileName="SignalX/SignalR/Client.cs" Line="6" Column="6" />
-      <File FileName="SignalX/ConflictPage.xaml.cs" Line="4" Column="4" />
-      <File FileName="SignalX/AlertPage.xaml.cs" Line="2" Column="2" />
+      <File FileName="SignalX/ChatPage.xaml" Line="4" Column="4" />
+      <File FileName="SignalX/ChatPage.xaml.cs" Line="4" Column="4" />
+      <File FileName="SignalX/obj/Debug/ChatPage.xaml.g.cs" Line="1" Column="1" />
+      <File FileName="SignalX/ViewModels/ChatViewModel.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
