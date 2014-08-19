@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace SignalX
 {
@@ -17,7 +18,7 @@ namespace SignalX
 
 		public static Page GetMainPage ()
 		{	
-			App.SignalXClient.Connect ();
+			Task.Run(async () => await App.SignalXClient.Connect ());
 
 			return new MainPage ();
 		}

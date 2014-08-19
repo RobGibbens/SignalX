@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace SignalX
 {
-	public class ChatViewModel : INotifyPropertyChanged
+	public class ChatViewModel : ViewModelBase
 	{
 		public ChatViewModel ()
 		{
@@ -43,11 +41,11 @@ namespace SignalX
 			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+		public string InfoMessage
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			get {
+				return "Use the Chat window to send chat messages to http://signalx.azurewebsites.net/Home/Index";
+			}
 		}
 	}
 }

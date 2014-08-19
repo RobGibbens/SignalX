@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<local:AlertPageBase
 	 xmlns="http://xamarin.com/schemas/2014/forms" 
 	 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	 x:Class="SignalX.AlertPage"
@@ -17,4 +17,4 @@
 	<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Alerts" />
 
 
-</ContentPage>
+</local:AlertPageBase>

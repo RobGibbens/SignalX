@@ -2,20 +2,19 @@
 
 namespace SignalX
 {	
-	public partial class ChatPage : ContentPage
+	public class ChatPageBase : ViewPage<ChatViewModel>
+	{
+	}
+
+	public partial class ChatPage : ChatPageBase
 	{	
-		private readonly ChatViewModel _viewModel;
 		public ChatPage ()
 		{
 			InitializeComponent ();
 
 			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
-				await DisplayAlert ("Info", "Message", "OK")
+				await DisplayAlert ("Info", this.ViewModel.InfoMessage, "OK")
 			));
-
-			_viewModel = new ChatViewModel ();
-
-			this.BindingContext = _viewModel;
 		}
 	}
 }

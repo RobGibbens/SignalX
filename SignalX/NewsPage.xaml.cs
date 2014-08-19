@@ -2,9 +2,12 @@
 
 namespace SignalX
 {	
-	public partial class NewsPage : ContentPage
+	public class NewsPageBase :  ViewPage<NewsViewModel>
+	{
+	}
+
+	public partial class NewsPage : NewsPageBase
 	{	
-		private readonly NewsViewModel _viewModel;
 		public NewsPage ()
 		{
 			InitializeComponent ();
@@ -12,14 +15,6 @@ namespace SignalX
 			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
 				await DisplayAlert ("Info", "Message", "OK")
 			));
-
-			_viewModel = new NewsViewModel ();
-
-			this.BindingContext = _viewModel;
-
-			App.SignalXClient.OnNewsAdded += (sender, newsItem) => 
-				_viewModel.NewsItems.Add (newsItem);
-			
 		}
 	}
 }

@@ -2,24 +2,25 @@
 
 namespace SignalX
 {
-	public partial class AlertPage : ContentPage
+	public class AlertPageBase :  ViewPage<AlertViewModel>
 	{
-		AlertViewModel _viewModel;
+	}
 
-		public AlertPage () : base()
+	public partial class AlertPage : AlertPageBase
+	{
+		public AlertPage ()
 		{
 			InitializeComponent ();
-
-			_viewModel = new AlertViewModel ();
-			this.BindingContext = _viewModel;
 
 			ToolbarItems.Add (new ToolbarItem ("Info", "info.png", async () => 
 				await DisplayAlert ("Info", "Message", "OK")
 			));
 
-			MessagingCenter.Subscribe<ErrorAlert> (this, "", (errorAlert) => {
-				DisplayAlert("Alert!", "Message", "OK");
-			});
+			MessagingCenter.Subscribe<ErrorAlert> (this, "Error", (errorAlert) => 
+				Device.BeginInvokeOnMainThread (() => 
+					this.DisplayAlert ("Alert!", "Message", "OK")
+				)
+			);
 		}
 	}
 }

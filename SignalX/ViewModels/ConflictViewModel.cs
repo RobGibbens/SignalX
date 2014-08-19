@@ -6,24 +6,14 @@ using System;
 
 namespace SignalX
 {
-
-
-	public class ConflictViewModel :  INotifyPropertyChanged
+	public class ConflictViewModel :  ViewModelBase
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
-
 		public ConflictViewModel ()
 		{
 			App.SignalXClient.OnUserSaved += HandleOnUserSaved;
 		}
 
-		void RaisePropertyChanged ([CallerMemberName] string propertyName = "")
-		{
-			PropertyChanged (this, new PropertyChangedEventArgs (propertyName));
-		}
-
 		string _firstName;
-
 		public string FirstName {
 			get {
 				return _firstName;
@@ -37,7 +27,6 @@ namespace SignalX
 		}
 
 		string _lastName;
-
 		public string LastName {
 			get {
 				return _lastName;
@@ -51,7 +40,6 @@ namespace SignalX
 		}
 
 		string _errorMessage;
-
 		public string ErrorMessage {
 			get {
 				return _errorMessage;
@@ -65,7 +53,6 @@ namespace SignalX
 		}
 
 		bool _hasErrors;
-
 		public bool HasErrors {
 			get {
 				return _hasErrors;
@@ -90,7 +77,6 @@ namespace SignalX
 		public ICommand SaveUser {
 			get {
 				return new Command (async () => {
-
 				});
 			}
 		}

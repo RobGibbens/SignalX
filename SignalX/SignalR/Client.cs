@@ -19,54 +19,78 @@ namespace SignalX
 		public event EventHandler OnUserSaved;
 		public event EventHandler<NewsItem> OnNewsAdded;
 
-		public Client()
+		public Client ()
 		{
-			_connection = new HubConnection("http://signalx.azurewebsites.net");
+			_connection = new HubConnection ("http://signalx.azurewebsites.net");
+			_connection.ConnectionSlow += () => {
+				var connectionSlow = true;
+			};
+			_connection.Received += (obj) => {
+				var rec = true;
+			};
+			_connection.Reconnecting += () => {
+				var recon = true;
+			};
+			_connection.Reconnected += () => {
+				var recon = true;
+			};
+			_connection.StateChanged += (obj) => {
+				var sc = true;
+			};
+			_connection.Closed += () => {
+				var closed = true;
+			};
+			_connection.TransportConnectTimeout = new TimeSpan (0, 0, 10);
 
 			_connection.Error += ex => {
-				var error = string.Format("SignalR error: {0}\r\n", ex.Message);
+				var error = string.Format ("SignalR error: {0}\r\n", ex.Message);
 			};
-			_chatHub = _connection.CreateHubProxy("chathub");
-			_conflictHub = _connection.CreateHubProxy("conflicthub");
-			_newsHub = _connection.CreateHubProxy("newshub");
-			_alertHub = _connection.CreateHubProxy("alerthub");
+
+			_chatHub = _connection.CreateHubProxy ("chathub");
+			_conflictHub = _connection.CreateHubProxy ("conflicthub");
+			_newsHub = _connection.CreateHubProxy ("newshub");
+			_alertHub = _connection.CreateHubProxy ("alerthub");
 
 		}
 
-		public async Task Connect()
+		public async Task Connect ()
 		{
 			if (_connection.State != ConnectionState.Connected) {
-				await _connection.Start ();
+				try {
+					await _connection.Start ();
 
-				_chatHub.On ("addMessage", (string message) => {
-					if (OnChatReceived != null)
-						OnChatReceived (this, string.Format ("{0}", message));
-				});
+					_chatHub.On ("addMessage", (string message) => {
+						if (OnChatReceived != null)
+							OnChatReceived (this, string.Format ("{0}", message));
+					});
 
-				_conflictHub.On ("userSaved", () => {
-					if (OnUserSaved != null)
-						OnUserSaved (this, new EventArgs ());
-				});
+					_conflictHub.On ("userSaved", () => {
+						if (OnUserSaved != null)
+							OnUserSaved (this, new EventArgs ());
+					});
 
-				_newsHub.On ("newsAdded", (JContainer item) => {
-					var newsItem = item.ToObject<NewsItem> ();
-					if (OnNewsAdded != null)
-						OnNewsAdded (this, newsItem);
-				});
+					_newsHub.On ("newsAdded", (JContainer item) => {
+						var newsItem = item.ToObject<NewsItem> ();
+						if (OnNewsAdded != null)
+							OnNewsAdded (this, newsItem);
+					});
 
-				_alertHub.On ("alertSent", (string message) => {
+					_alertHub.On ("alertSent", (string message) => {
 
-					if (OnAlertSent != null)
-						OnAlertSent (this, message);
-				});
+						if (OnAlertSent != null)
+							OnAlertSent (this, message);
+					});
 
+				} catch (Exception ex) {
+					var message = ex.Message;
+				}
 				await Send ("Connected");
 			}
 		}
-			
-		public Task Send(string message)
+
+		public Task Send (string message)
 		{
-			return _chatHub.Invoke("sendMessage", message);
+			return _chatHub.Invoke ("sendMessage", message);
 		}
 	}
 }

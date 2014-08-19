@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<local:ConflictPageBase 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	x:Class="SignalX.ConflictPage" 
+	xmlns:local="clr-namespace:SignalX;assembly=SignalX"
 	Title="Conflicts">
 
 	<ContentPage.Padding>
@@ -53,4 +54,4 @@
 		</StackLayout>
 	</ScrollView>
 
-</ContentPage>
+</local:ConflictPageBase>
