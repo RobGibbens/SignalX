@@ -16,7 +16,7 @@
 
 	<ContentPage.Resources>
 	  <ResourceDictionary>
-	  	<local:AlignmentConverter x:Key="myApp" />
+	  	<local:AlignmentConverter x:Key="align" />
 	  </ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -44,9 +44,12 @@
 			        <DataTemplate>
 				        <ViewCell>
 				          <ViewCell.View>
-				            <Label 
-				            	Text="{Binding Message}"
-				            	XAlign="{Binding IsLocalUser, Converter={StaticResource myApp}}" />
+					          <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+					            <Label 
+					            	Text="{Binding Message}"
+					            	XAlign="{Binding IsLocalUser, Converter={StaticResource align}}"
+					            	VerticalOptions="CenterAndExpand" />
+					          </StackLayout>
 				          </ViewCell.View>
 				        </ViewCell>
 			        </DataTemplate>

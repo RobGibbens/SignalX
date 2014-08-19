@@ -16,8 +16,19 @@ namespace SignalX
 			}
 		}
 
+		static string _userId;
+		public static string UserId {
+			get {
+				if (_userId == null) {
+					_userId = Guid.NewGuid ().ToString();
+				}
+				return _userId;
+			}
+		}
+
 		public static Page GetMainPage ()
 		{	
+			var userId = App.UserId;
 			Task.Run(async () => await App.SignalXClient.Connect ());
 
 			return new MainPage ();

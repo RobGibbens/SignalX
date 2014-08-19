@@ -9,8 +9,11 @@ namespace SignalX
 		public object Convert (object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			var isLocalUser = (bool)value;
-			return TextAlignment.End;
-			//return value;
+			if (isLocalUser) {
+				return TextAlignment.End;
+			} else {
+				return TextAlignment.Start;
+			}
 		}
 
 		public object ConvertBack (object value, Type targetType, object parameter, CultureInfo culture)

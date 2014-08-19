@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System;
+using System.Threading.Tasks;
 
 namespace SignalX
 {
@@ -11,21 +13,27 @@ namespace SignalX
 		{
 			ChatMessages = new ObservableCollection<ChatMessage> ();
 
-			App.SignalXClient.OnChatReceived += (sender, e) => 
-				this.ChatMessages.Add (new ChatMessage { Message = e });
+			App.SignalXClient.OnChatReceived += (sender, chatMessage) => 
+				this.ChatMessages.Add (chatMessage);
 		}
 
 		public IList<ChatMessage> ChatMessages { get; set; }
+
 
 		public ICommand SendMessage
 		{
 			get {
 				return new Command(async () =>
 					{
-						await App.SignalXClient.Send(this.MessageToSend);
-						this.MessageToSend = string.Empty;
+						await Send();
 					});
 			}
+		}
+
+		private async Task Send()
+		{
+			await App.SignalXClient.Send(this.MessageToSend, App.UserId);
+			this.MessageToSend = string.Empty;
 		}
 
 		string messageToSend;

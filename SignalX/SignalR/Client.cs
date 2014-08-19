@@ -14,7 +14,7 @@ namespace SignalX
 		private readonly IHubProxy _alertHub;
 
 		public event EventHandler<string> OnMessageReceived;
-		public event EventHandler<string> OnChatReceived;
+		public event EventHandler<ChatMessage> OnChatReceived;
 		public event EventHandler<string> OnAlertSent;
 		public event EventHandler OnUserSaved;
 		public event EventHandler<NewsItem> OnNewsAdded;
@@ -59,9 +59,9 @@ namespace SignalX
 				try {
 					await _connection.Start ();
 
-					_chatHub.On ("addMessage", (string message) => {
+					_chatHub.On ("addMessage", (string message, string userId) => {
 						if (OnChatReceived != null)
-							OnChatReceived (this, string.Format ("{0}", message));
+							OnChatReceived (this, new ChatMessage { Message = message, UserId = userId });
 					});
 
 					_conflictHub.On ("userSaved", () => {
@@ -84,13 +84,14 @@ namespace SignalX
 				} catch (Exception ex) {
 					var message = ex.Message;
 				}
-				await Send ("Connected");
+
+				await Send("Connected", App.UserId);
 			}
 		}
 
-		public Task Send (string message)
+		public Task Send (string message, string userId)
 		{
-			return _chatHub.Invoke ("sendMessage", message);
+			return _chatHub.Invoke ("sendMessage", message, userId);
 		}
 	}
 }
