@@ -7,9 +7,9 @@ namespace SignalX.Web.Hubs
     [HubName("chathub")]
     public class ChatHub : Hub
     {
-        public void sendMessage(string message)
+        public void sendMessage(string message, string userId)
         {
-            Clients.All.addMessage(message);
+            Clients.All.addMessage(message, userId);
         }
     }
 }

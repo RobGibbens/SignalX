@@ -5,7 +5,10 @@ $j(function () {
     var conflictConn = $j.connection.conflicthub;
     var newsConn = $j.connection.newshub;
     var alertConn = $j.connection.alerthub;
-
+    var userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
     chatConn.client.addMessage = function (message) {
         $j('#messages').append('<li class="list-group-item">' + message + '</li>');
     };
@@ -14,7 +17,9 @@ $j(function () {
         $j('#send').click(function (e) {
             e.preventDefault();
             var messageToSend = $j('#message').val();
-            chatConn.server.sendMessage(messageToSend);
+            console.log("message:" + messageToSend);
+            console.log("userId:" + userId);
+            chatConn.server.sendMessage(messageToSend, userId);
             $j('#message').val('');
             $j('#message').focus();
         });
