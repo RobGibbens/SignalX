@@ -5,7 +5,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace SignalX.Android
 {
-	[Activity (Label = "SignalX.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "SignalX", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : AndroidActivity
 	{
 		protected override void OnCreate (Bundle bundle)
@@ -18,4 +18,3 @@ namespace SignalX.Android
 		}
 	}
 }
-

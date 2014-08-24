@@ -16,5 +16,4 @@
 
 	<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Alerts" />
 
-
 </local:AlertPageBase>

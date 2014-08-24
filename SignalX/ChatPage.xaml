@@ -22,6 +22,11 @@
 
 	<ScrollView>
 		<StackLayout Orientation="Vertical">
+			<Label HorizontalOptions="StartAndExpand" 
+				Font="14" 
+				TextColor="Green" 
+				Text="{Binding Status}" />
+		
 			<Label HorizontalOptions="CenterAndExpand" Font="26" Text="Chat" />
 
 			<Editor 
@@ -29,13 +34,15 @@
 				Text="{Binding MessageToSend, Mode=TwoWay}" 
 				HeightRequest="75" />
 
-			<Button 
-				x:Name="Send" 
-				Text="Send" 
-				BackgroundColor="Green" 
-				TextColor="White" 
-				HorizontalOptions="FillAndExpand" 
-				Command="{Binding SendMessage}" />
+			<StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="Green" >
+				<Button 
+					x:Name="Send" 
+					Text="Send" 
+					BackgroundColor="Green" 
+					TextColor="White" 
+					HorizontalOptions="FillAndExpand" 
+					Command="{Binding SendMessage}" />
+			</StackLayout>
 
 			<Label Text="Received Messages" />
 

@@ -6,6 +6,11 @@ using System;
 
 namespace SignalX
 {
+	public class ConnectionStatus
+	{
+		public string Status { get; set; }
+	}
+
 	public class ErrorAlert
 	{
 	}

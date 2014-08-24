@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System;
 using System.Threading.Tasks;
+using PropertyChanged;
 
 namespace SignalX
 {
-	public class ChatViewModel : ViewModelBase
+	[ImplementPropertyChanged]
+	public class ChatViewModel : IViewModel
 	{
 		public ChatViewModel ()
 		{
@@ -15,37 +17,24 @@ namespace SignalX
 
 			App.SignalXClient.OnChatReceived += (sender, chatMessage) => 
 				this.ChatMessages.Add (chatMessage);
+
+			MessagingCenter.Subscribe<ConnectionStatus> (this, "ConnectionChanged", (status) => {
+				this.Status = "Status: " + status.Status;
+			});
 		}
 
-		public IList<ChatMessage> ChatMessages { get; set; }
-
+		public ObservableCollection<ChatMessage> ChatMessages { get; set; }
+		public string Status { get; set; }
+		public string MessageToSend { get; set; }
 
 		public ICommand SendMessage
 		{
 			get {
 				return new Command(async () =>
 					{
-						await Send();
+						await App.SignalXClient.Send(this.MessageToSend, App.UserId);
+						this.MessageToSend = string.Empty;
 					});
-			}
-		}
-
-		private async Task Send()
-		{
-			await App.SignalXClient.Send(this.MessageToSend, App.UserId);
-			this.MessageToSend = string.Empty;
-		}
-
-		string messageToSend;
-		public string MessageToSend {
-			get {
-				return messageToSend;
-			}
-			set {
-				if (messageToSend != value) {
-					messageToSend = value;
-					RaisePropertyChanged ();
-				}
 			}
 		}
 

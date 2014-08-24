@@ -2,7 +2,7 @@ using Xamarin.Forms;
 
 namespace SignalX
 {
-	public class ViewPage<T> : ContentPage where T:ViewModelBase, new()
+	public class ViewPage<T> : ContentPage where T:IViewModel, new()
 	{
 		readonly T _viewModel; 
 

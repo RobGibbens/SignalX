@@ -2,9 +2,7 @@
 
 namespace SignalX
 {	
-	public class ChatPageBase : ViewPage<ChatViewModel>
-	{
-	}
+	public class ChatPageBase : ViewPage<ChatViewModel> {}
 
 	public partial class ChatPage : ChatPageBase
 	{	

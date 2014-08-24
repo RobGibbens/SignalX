@@ -1,13 +1,14 @@
 using Xamarin.Forms;
+using PropertyChanged;
 
 namespace SignalX
 {
-	public class AlertViewModel : ViewModelBase
+	[ImplementPropertyChanged]
+	public class AlertViewModel : IViewModel
 	{
 		public AlertViewModel ()
 		{
 			App.SignalXClient.OnAlertSent += (sender, e) => 
-				//await DisplayAlert("Alert!", e, "OK");
 				MessagingCenter.Send<ErrorAlert> (new ErrorAlert (), "Error");
 		}
 	}

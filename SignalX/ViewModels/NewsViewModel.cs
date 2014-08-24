@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using PropertyChanged;
 
 namespace SignalX
 {
-	public class NewsViewModel : ViewModelBase
+	[ImplementPropertyChanged]
+	public class NewsViewModel : IViewModel
 	{
 		public NewsViewModel ()
 		{
@@ -12,6 +13,6 @@ namespace SignalX
 				this.NewsItems.Add (newsItem);
 		}
 
-		public IList<NewsItem> NewsItems { get; set; }
+		public ObservableCollection<NewsItem> NewsItems { get; set; }
 	}
 }

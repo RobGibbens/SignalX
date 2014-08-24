@@ -1,73 +1,26 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System;
+using PropertyChanged;
 
 namespace SignalX
 {
-	public class ConflictViewModel :  ViewModelBase
+	[ImplementPropertyChanged]
+	public class ConflictViewModel : IViewModel
 	{
 		public ConflictViewModel ()
 		{
 			App.SignalXClient.OnUserSaved += HandleOnUserSaved;
 		}
 
-		string _firstName;
-		public string FirstName {
-			get {
-				return _firstName;
-			}
-			set {
-				if (_firstName != value) {
-					_firstName = value;
-					RaisePropertyChanged ();
-				}
-			}
-		}
-
-		string _lastName;
-		public string LastName {
-			get {
-				return _lastName;
-			}
-			set {
-				if (_lastName != value) {
-					_lastName = value;
-					RaisePropertyChanged ();
-				}
-			}
-		}
-
-		string _errorMessage;
-		public string ErrorMessage {
-			get {
-				return _errorMessage;
-			}
-			set {
-				if (_errorMessage != value) {
-					_errorMessage = value;
-					RaisePropertyChanged ();
-				}
-			}
-		}
-
-		bool _hasErrors;
-		public bool HasErrors {
-			get {
-				return _hasErrors;
-			}
-			set {
-				if (_hasErrors != value) {
-					_hasErrors = value;
-					RaisePropertyChanged ();
-				}
-			}
-		}
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string ErrorMessage { get; set; }
+		public bool HasErrors { get; set; }
 
 		public ICommand ClearErrorMessage {
 			get {
-				return new Command (async () => {
+				return new Command (() => {
 					this.ErrorMessage = string.Empty;
 					this.HasErrors = false;
 				});
@@ -76,7 +29,8 @@ namespace SignalX
 
 		public ICommand SaveUser {
 			get {
-				return new Command (async () => {
+				return new Command (() => {
+					//TODO : Do something
 				});
 			}
 		}

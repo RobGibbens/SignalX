@@ -1,24 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SignalX/ViewModels/ChatViewModel.cs">
-    <Files>
-      <File FileName="SignalX/SignalR/Client.cs" Line="5" Column="5" />
-      <File FileName="SignalX/ViewModels/ChatViewModel.cs" Line="3" Column="3" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/rob/dev/SignalX/SignalX/ViewModels/AlertViewModel.cs" line="11" column="1" />
-      <Breakpoint file="/Users/rob/dev/SignalX/SignalX/ContentPageWithViewModel.cs" line="17" column="1" />
-      <Breakpoint file="/Users/rob/dev/SignalX/SignalX/SignalR/Client.cs" line="80" column="1" />
-      <Breakpoint file="/Users/rob/dev/SignalX/SignalX/SignalR/Client.cs" line="85" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="SignalX/SignalR/Client.cs" line="40" offsetX="390" offsetY="514" expression="OnChatReceived" liveUpdate="False" />
+    <Watch file="SignalX/SignalR/Client.cs" line="40" offsetX="454" offsetY="653" expression="OnChatReceived" liveUpdate="False" />
     <Watch file="SignalX/SignalR/Client.cs" line="36" offsetX="526" offsetY="562" expression="_connection.State" liveUpdate="False" />
-    <Watch file="SignalX/SignalR/Client.cs" line="37" offsetX="503" offsetY="612" expression="obj.NewState" liveUpdate="False" />
-    <Watch file="SignalX/SignalR/Client.cs" line="37" offsetX="503" offsetY="654" expression="obj.OldState" liveUpdate="False" />
+    <Watch file="SignalX/SignalR/Client.cs" line="37" offsetX="502" offsetY="657" expression="obj.NewState" liveUpdate="False" />
+    <Watch file="SignalX/SignalR/Client.cs" line="37" offsetX="498" offsetY="620" expression="obj.OldState" liveUpdate="False" />
+    <Watch file="SignalX/ViewModels/ViewModelBase.cs" line="18" offsetX="346" offsetY="212" expression="this" liveUpdate="False" />
+    <Watch file="SignalX/ViewModels/ViewModelBase.cs" line="18" offsetX="452" offsetY="289" expression="status" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.SignalX.Android MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
 </Properties>
